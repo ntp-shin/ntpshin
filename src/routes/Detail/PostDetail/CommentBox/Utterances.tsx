@@ -15,7 +15,7 @@ const Utterances: React.FC<Props> = ({ issueTerm }) => {
   const router = useRouter()
 
   useEffect(() => {
-    const theme = `github-${scheme}`
+    const theme = scheme === "light" ? "github-light" : "github-dark"
     const script = document.createElement("script")
     const anchor = document.getElementById("comments")
     if (!anchor) return

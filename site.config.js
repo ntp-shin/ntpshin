@@ -1,31 +1,30 @@
 const CONFIG = {
   // profile setting (required)
   profile: {
-    name: "morethanmin",
-    image: "/avatar.svg", // If you want to create your own notion avatar, check out https://notion-avatar.vercel.app
-    role: "frontend developer",
-    bio: "I develop everything using node.",
-    email: "morethanmin.dev@gmail.com",
-    linkedin: "morethanmin",
-    github: "morethanmin",
-    instagram: "",
+    name: "Tan Phat Nguyen",
+    image: "/avatar-03-01.svg", // If you want to create your own notion avatar, check out https://notion-avatar.vercel.app
+    role: "AI Engineer",
+    bio: "I'm a student who is passionate about AI and programming.",
+    email: "tanphatnguyen2002@gmail.com",
+    linkedin: "ntp-shin",
+    github: "ntp-shin",
+    instagram: "ntp_shin",
   },
   projects: [
     {
-      name: `morethan-log`,
-      href: "https://github.com/morethanmin/morethan-log",
+      name: `ntpshin`,
+      href: "https://github.com/ntp-shin/ntpshin",
     },
   ],
   // blog setting (required)
   blog: {
-    title: "morethan-log",
-    description: "welcome to morethan-log!",
-    scheme: "dark", // 'light' | 'dark' | 'system'
+    title: "Tan Phat Nguyen's Blog",
+    description: "welcome to my channel =)))",
   },
 
   // CONFIG configration (required)
-  link: "https://morethan-log.vercel.app",
-  since: 2022, // If leave this empty, current year will be used.
+  link: "https://ntpshin.vercel.app",
+  since: 2024, // If leave this empty, current year will be used.
   lang: "en-US", // ['en-US', 'zh-CN', 'zh-HK', 'zh-TW', 'ja-JP', 'es-ES', 'ko-KR']
   ogImageGenerateURL: "https://og-image-korean.vercel.app", // The link to generate OG image, don't end with a slash
 
@@ -36,13 +35,13 @@ const CONFIG = {
 
   // plugin configuration (optional)
   googleAnalytics: {
-    enable: false,
+    enable: true,
     config: {
       measurementId: process.env.NEXT_PUBLIC_GOOGLE_MEASUREMENT_ID || "",
     },
   },
   googleSearchConsole: {
-    enable: false,
+    enable: true,
     config: {
       siteVerification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "",
     },
@@ -56,20 +55,21 @@ const CONFIG = {
   utterances: {
     enable: true,
     config: {
-      repo: process.env.NEXT_PUBLIC_UTTERANCES_REPO || "",
+      // repo: process.env.NEXT_PUBLIC_UTTERANCES_REPO || "",
+      repo: "ntp-shin/ntpshin",
       "issue-term": "og:title",
       label: "💬 Utterances",
     },
-  },
+  },  
   cusdis: {
     enable: false,
     config: {
-      host: "https://cusdis.com",
+      host: "https://cusdis.com", 
       appid: "", // Embed Code -> data-app-id value
     },
   },
   isProd: process.env.VERCEL_ENV === "production", // distinguish between development and production environment (ref: https://vercel.com/docs/environment-variables#system-environment-variables)
-  revalidateTime: 21600 * 7, // revalidate time for [slug], index
+  revalidateTime: 60, // re-generate after 1 hour
 }
 
 module.exports = { CONFIG }
