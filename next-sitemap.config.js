@@ -4,7 +4,7 @@ module.exports = {
   siteUrl: CONFIG.link,
   generateRobotsTxt: true,
   sitemapSize: 7000,
-  generateIndexSitemap: true,
+  generateIndexSitemap: false,
 }
 
 // module.exports = {
