@@ -8,19 +8,17 @@ const { CONFIG } = require("./site.config")
 // }
 
 module.exports = {
-  siteUrl: CONFIG.link || "https://ntpshin.vercel.app",  // Đảm bảo siteUrl đúng
-  generateRobotsTxt: true,  // Tạo file robots.txt tự động
-  sitemapSize: 7000,  // Kích thước sitemap
-  generateIndexSitemap: false,  // Không tạo index sitemap
+  siteUrl: CONFIG.link,
+  generateRobotsTxt: true, // Tiếp tục tạo robots.txt
+  sitemapSize: 7000,
+  generateIndexSitemap: false,
   robotsTxtOptions: {
+    additionalSitemaps: [], // Xóa các dòng Host liên quan
     policies: [
       {
         userAgent: "*",
-        allow: "/",
+        allow: "/",  // Cho phép toàn bộ trang web được crawl
       },
-    ],
-    additionalSitemaps: [
-      `${CONFIG.link || "https://ntpshin.vercel.app"}/sitemap_index.xml`,
     ],
   },
 }
