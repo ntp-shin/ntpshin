@@ -13,6 +13,13 @@ import { TPosts } from "src/types"
 // TODO: react query를 사용해서 처음 불러온 뒤로는 해당데이터만 사용하도록 수정
 export const getPosts = async () => {
   let id = CONFIG.notionConfig.pageId as string
+  
+  // Check if pageId is defined
+  if (!id) {
+    console.error('NOTION_PAGE_ID is not defined in environment variables')
+    throw new Error('NOTION_PAGE_ID is required but not found in environment variables. Please check your .env.local file.')
+  }
+  
   const api = new NotionAPI()
 
   const response = await api.getPage(id)

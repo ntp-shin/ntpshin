@@ -19,7 +19,7 @@ const MobileTableOfContents: React.FC<Props> = () => {
     <>
       <StyledFloatingButton
         onClick={() => setIsOpen(true)}
-        aria-label="Mở mục lục"
+        aria-label="Mở Table of Contents"
       >
         📋
       </StyledFloatingButton>
@@ -28,10 +28,10 @@ const MobileTableOfContents: React.FC<Props> = () => {
         <StyledOverlay onClick={() => setIsOpen(false)}>
           <StyledModal onClick={(e) => e.stopPropagation()}>
             <StyledHeader>
-              <StyledTitle>📋 Mục lục</StyledTitle>
+              <StyledTitle>📋 Table of Contents</StyledTitle>
               <StyledCloseButton
                 onClick={() => setIsOpen(false)}
-                aria-label="Đóng mục lục"
+                aria-label="Đóng Table of Contents"
               >
                 ✕
               </StyledCloseButton>
@@ -213,7 +213,8 @@ const StyledListItem = styled.div<StyledListItemProps>`
 `
 
 const StyledBullet = styled.span<StyledListItemProps>`
-  font-size: 1rem;
+  font-size: ${({ level }) => 
+    level === 1 ? '0.9rem' : level === 2 ? '0.85rem' : '0.75rem'};
   color: ${({ theme, isActive }) =>
     isActive 
       ? theme.scheme === 'light' ? theme.colors.blue11 : theme.colors.blue9
@@ -226,6 +227,6 @@ const StyledText = styled.span`
   font-size: 0.95rem;
   line-height: 1.5;
   color: ${({ theme }) =>
-    theme.scheme === 'light' ? theme.colors.gray11 : theme.colors.gray3};
+    theme.scheme === 'light' ? theme.colors.gray12 : theme.colors.gray12};
   word-break: break-word;
 `

@@ -19,15 +19,7 @@ const TableOfContents: React.FC<Props> = () => {
       }}
       isDragging={isDragging}
     >
-      <StyledDragHandle 
-        onMouseDown={handleMouseDown}
-        isDragging={isDragging}
-        title="Kéo để di chuyển"
-      >
-        <StyledDragIcon>⋮⋮</StyledDragIcon>
-      </StyledDragHandle>
-      
-      <StyledTitle>📋 Mục lục</StyledTitle>
+      <StyledTitle>📋 Table of Contents</StyledTitle>
       <StyledList>
         {toc.map((item) => (
           <StyledListItem
@@ -129,13 +121,14 @@ const StyledWrapper = styled.div<StyledWrapperProps>`
 `
 
 const StyledTitle = styled.h3`
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 1.5rem;
   color: ${({ theme }) =>
-    theme.scheme === 'light' ? theme.colors.gray12 : theme.colors.gray1};
+    theme.scheme === 'light' ? theme.colors.gray12 : theme.colors.gray12};
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.75rem;
   padding-bottom: 1rem;
   border-bottom: 2px solid ${({ theme }) =>
@@ -286,7 +279,7 @@ const StyledListItem = styled.li<StyledListItemProps>`
 
 const StyledBullet = styled.span<StyledListItemProps>`
   font-size: ${({ level }) => 
-    level === 1 ? '1rem' : level === 2 ? '0.9rem' : '0.8rem'};
+    level === 1 ? '0.85rem' : level === 2 ? '0.88rem' : '0.85rem'};
   color: ${({ theme, isActive }) =>
     isActive 
       ? theme.scheme === 'light' ? theme.colors.blue11 : theme.colors.blue9
@@ -299,56 +292,11 @@ const StyledBullet = styled.span<StyledListItemProps>`
 `
 
 const StyledText = styled.span`
-  font-size: 0.875rem;
+  font-size: 1rem;
   line-height: 1.5;
   color: ${({ theme }) =>
-    theme.scheme === 'light' ? theme.colors.gray11 : theme.colors.gray3};
+    theme.scheme === 'light' ? theme.colors.gray12 : theme.colors.gray12};
   transition: all 0.3s ease;
   word-break: break-word;
   font-weight: 400;
-`
-
-type StyledDragHandleProps = {
-  isDragging: boolean
-}
-
-const StyledDragHandle = styled.div<StyledDragHandleProps>`
-  position: absolute;
-  top: -10px;
-  right: 50%;
-  transform: translateX(50%);
-  width: 60px;
-  height: 20px;
-  background: ${({ theme }) =>
-    theme.scheme === 'light' 
-      ? 'linear-gradient(135deg, rgba(59, 130, 246, 0.8), rgba(99, 102, 241, 0.8))'
-      : 'linear-gradient(135deg, rgba(99, 102, 241, 0.8), rgba(139, 92, 246, 0.8))'
-  };
-  border-radius: 10px;
-  cursor: ${({ isDragging }) => isDragging ? 'grabbing' : 'grab'};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  opacity: 0.7;
-  
-  &:hover {
-    opacity: 1;
-    transform: translateX(50%) scale(1.1);
-    box-shadow: ${({ theme }) =>
-      theme.scheme === 'light'
-        ? '0 8px 25px -8px rgba(59, 130, 246, 0.4)'
-        : '0 8px 25px -8px rgba(99, 102, 241, 0.4)'
-    };
-  }
-`
-
-const StyledDragIcon = styled.span`
-  color: white;
-  font-size: 0.75rem;
-  font-weight: bold;
-  letter-spacing: 2px;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  user-select: none;
-  transform: rotate(90deg);
 `
