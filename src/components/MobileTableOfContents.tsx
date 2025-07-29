@@ -129,10 +129,11 @@ const StyledModal = styled.div`
 const StyledHeader = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 1.5rem;
   border-bottom: 1px solid ${({ theme }) =>
     theme.scheme === 'light' ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.1)'};
+  position: relative;
 `
 
 const StyledTitle = styled.h3`
@@ -140,7 +141,7 @@ const StyledTitle = styled.h3`
   font-weight: 600;
   margin: 0;
   color: ${({ theme }) =>
-    theme.scheme === 'light' ? theme.colors.gray12 : theme.colors.gray1};
+    theme.scheme === 'light' ? theme.colors.blue11 : theme.colors.blue9};
 `
 
 const StyledCloseButton = styled.button`
@@ -158,6 +159,10 @@ const StyledCloseButton = styled.button`
   height: 32px;
   border-radius: 50%;
   transition: all 0.2s ease;
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
 
   &:hover {
     background: ${({ theme }) =>
