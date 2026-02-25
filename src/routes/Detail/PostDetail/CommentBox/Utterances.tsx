@@ -1,8 +1,10 @@
 import { CONFIG } from "site.config"
-import { useEffect, useRef } from "react"
+import { useEffect } from "react"
 import styled from "@emotion/styled"
 import useScheme from "src/hooks/useScheme"
 import { useRouter } from "next/router"
+
+//TODO: useRef?
 
 type Props = {
   issueTerm: string
@@ -11,46 +13,33 @@ type Props = {
 const Utterances: React.FC<Props> = ({ issueTerm }) => {
   const [scheme] = useScheme()
   const router = useRouter()
-  const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const theme = scheme === "light" ? "github-light" : "github-dark"
-    const container = containerRef.current
-    if (!container) return
-
-    // Clear previous content safely
-    while (container.firstChild) {
-      container.removeChild(container.firstChild)
-    }
-
+    const theme = `github-${scheme}`
     const script = document.createElement("script")
+    const anchor = document.getElementById("comments")
+    if (!anchor) return
+
     script.setAttribute("src", "https://utteranc.es/client.js")
     script.setAttribute("crossorigin", "anonymous")
-    script.setAttribute("async", "true")
+    script.setAttribute("async", `true`)
     script.setAttribute("issue-term", issueTerm)
     script.setAttribute("theme", theme)
-    
     const config: Record<string, string> = CONFIG.utterances.config
     Object.keys(config).forEach((key) => {
       script.setAttribute(key, config[key])
     })
-    
-    container.appendChild(script)
-    
+    anchor.appendChild(script)
     return () => {
-      // Safe cleanup - check if element still exists and has parent
-      if (container && container.parentNode) {
-        while (container.firstChild) {
-          container.removeChild(container.firstChild)
-        }
-      }
+      anchor.innerHTML = ""
     }
-  }, [scheme, router, issueTerm])
-
+  }, [scheme, router])
   return (
-    <StyledWrapper ref={containerRef}>
-      <div className="utterances-frame"></div>
-    </StyledWrapper>
+    <>
+      <StyledWrapper id="comments">
+        <div className="utterances-frame"></div>
+      </StyledWrapper>
+    </>
   )
 }
 

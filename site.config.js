@@ -2,7 +2,7 @@ const CONFIG = {
   // profile setting (required)
   profile: {
     name: "Tan Phat Nguyen",
-    image: "/avatar-03-01.svg", // If you want to create your own notion avatar, check out https://notion-avatar.vercel.app
+    image: "/avatar-01.svg", // If you want to create your own notion avatar, check out https://notion-avatar.vercel.app
     role: "AI Engineer",
     bio: "I'm a student who is passionate about AI and programming.",
     email: "tanphatnguyen2002@gmail.com",
@@ -20,6 +20,7 @@ const CONFIG = {
   blog: {
     title: "Tan Phat Nguyen's Blog",
     description: "welcome to my channel =)))",
+    scheme: "dark", // 'light' | 'dark' | 'system'
   },
 
   // CONFIG configration (required)
@@ -64,7 +65,7 @@ const CONFIG = {
   cusdis: {
     enable: false,
     config: {
-      host: "https://cusdis.com", 
+      host: "https://cusdis.com",
       appid: "", // Embed Code -> data-app-id value
     },
   },
