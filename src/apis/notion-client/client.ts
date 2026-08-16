@@ -8,7 +8,7 @@ const defaultGotOptions = {
   },
 }
 
-function unwrapRecordMap(recordMap?: Record<string, any>) {
+function unwrapRecordMap(recordMap?: any) {
   if (!recordMap) return recordMap
 
   for (const table of Object.keys(recordMap)) {
@@ -30,7 +30,7 @@ function unwrapRecordMap(recordMap?: Record<string, any>) {
   return recordMap
 }
 
-function withDefaultGotOptions(gotOptions?: Record<string, any>) {
+function withDefaultGotOptions(gotOptions?: any): any {
   return {
     ...defaultGotOptions,
     ...gotOptions,
@@ -42,10 +42,20 @@ function withDefaultGotOptions(gotOptions?: Record<string, any>) {
 }
 
 class CompatibleNotionAPI extends NotionAPI {
-  async fetch(args: any) {
-    const { headers, gotOptions, ...rest } = args
-    return super.fetch({
-      ...rest,
+  async fetch<T>({
+    endpoint,
+    body,
+    gotOptions,
+    headers,
+  }: {
+    endpoint: string
+    body: object
+    gotOptions?: any
+    headers?: any
+  }): Promise<T> {
+    return super.fetch<T>({
+      endpoint,
+      body,
       gotOptions: withDefaultGotOptions(gotOptions),
       headers: {
         ...defaultGotOptions.headers,

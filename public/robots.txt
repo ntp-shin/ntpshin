@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://ntpshin.vercel.app
+
+# Sitemaps
+Sitemap: https://ntpshin.vercel.app/sitemap.xml
